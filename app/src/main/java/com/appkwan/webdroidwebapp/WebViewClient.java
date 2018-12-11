@@ -1,5 +1,6 @@
 package com.appkwan.webdroidwebapp;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -9,12 +10,14 @@ import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.webkit.GeolocationPermissions;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -144,15 +147,19 @@ public class WebViewClient {
                 //Toast.makeText(MainActivity.this, description, Toast.LENGTH_SHORT).show();
                 //  Log.e(TAG," Error occure while loading the web page at Url"+ failingUrl+"." +description);
                 view.loadUrl("about:blank");
-                Toast.makeText(context, "Please Turn on Your Data Connection or Wi-Fi to Use This App and Press 'Back Button' to Reload", Toast.LENGTH_LONG).show();
-                Toast.makeText(context, "Please Turn on Your Data Connection or Wi-Fi to Use This App and Press 'Back Button' to Reload", Toast.LENGTH_LONG).show();
-                Toast.makeText(context, "Please Turn on Your Data Connection or Wi-Fi to Use This App and Press 'Back Button' to Reload", Toast.LENGTH_LONG).show();
-                Toast.makeText(context, "Please Turn on Your Data Connection or Wi-Fi to Use This App and Press 'Back Button' to Reload", Toast.LENGTH_LONG).show();
-
+                showInternetConnectionOutAlertDialog();
                 super.onReceivedError(view, errorCode, description, failingUrl);
             }
         });
 
+    }
+
+    private void showInternetConnectionOutAlertDialog() {
+        final Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(true);
+        dialog.setContentView(R.layout.dialog_network_error);
+        dialog.show();
     }
 
 }
