@@ -22,20 +22,22 @@
         android:layout_marginBottom="0dp"
         android:background="#eaeaea"
         android:gravity="center_horizontal"
-        android:paddingBottom="10dp"
         android:orientation="vertical"
-        android:paddingTop="10dp">
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bs_icon_bg_size"
+            android:gravity="center"
             android:orientation="horizontal"
             android:weightSum="4">
 
             <LinearLayout
                 android:id="@+id/bottom_sheet_home"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="@dimen/bs_icon_bg_size"
+                android:layout_height="@dimen/bs_icon_bg_size"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/circle_bg_bottom_menu">
 
                 <ImageView
@@ -49,9 +51,10 @@
 
             <LinearLayout
                 android:id="@+id/bottom_sheet_travel"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="@dimen/bs_icon_bg_size"
+                android:layout_height="@dimen/bs_icon_bg_size"
                 android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/circle_bg_bottom_menu">
 
                 <ImageView
@@ -66,10 +69,11 @@
 
             <LinearLayout
                 android:id="@+id/bottom_sheet_face"
-                android:layout_width="60dp"
-
-                android:layout_height="60dp"
+                android:layout_width="@dimen/bs_icon_bg_size"
+                android:layout_height="@dimen/bs_icon_bg_size"
                 android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+
                 android:background="@drawable/circle_bg_bottom_menu">
 
                 <ImageView
@@ -84,10 +88,10 @@
 
             <LinearLayout
                 android:id="@+id/bottom_sheet_spoon"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-
+                android:layout_width="@dimen/bs_icon_bg_size"
+                android:layout_height="@dimen/bs_icon_bg_size"
                 android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/circle_bg_bottom_menu">
 
                 <ImageView
@@ -102,9 +106,8 @@
 
             <LinearLayout
                 android:id="@+id/bottom_sheet_cycle"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-
+                android:layout_width="@dimen/bs_icon_bg_size"
+                android:layout_height="@dimen/bs_icon_bg_size"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/circle_bg_bottom_menu">
 

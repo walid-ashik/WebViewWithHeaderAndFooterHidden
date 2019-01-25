@@ -19,13 +19,17 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 import static com.appkwan.webdroidwebapp.R.id.bottom_sheet_cycle;
+import static com.appkwan.webdroidwebapp.R.id.visible;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BottomNavigationBar.OnTabSelectedListener {
 
     private static final String TAG = "MainActivity";
 
     @BindView(R.id.bottom_navigation_bar)
     BottomNavigationBar bottomNavigationBar;
+
+    @BindView(R.id.ll_transparent_bg)
+    LinearLayout llTransparentBg;
 
     @BindView(R.id.webview)
     WebView mWebView;
@@ -48,54 +52,12 @@ public class MainActivity extends AppCompatActivity {
 
         initWebView();
         initBottomNavigationView();
+        bottomNavigationBar.setTabSelectedListener(this);
 
         //...initially load the home website
         mWebView.loadUrl("https://" + getString(R.string.your_website_url));
         WebViewClient webViewClient = new WebViewClient(this, mWebView);
         webViewClient.improveWebViewPerformance(mLoadingSpinner);
-
-        bottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(int position) {
-
-                switch (position) {
-                    case 0:
-                        //...TODO: replace with your URL
-                        mWebView.loadUrl("https://" + getString(R.string.your_website_url));
-                        break;
-                    case 1:
-                        //...TODO: replace with your URL in TRAVEL position
-                        mWebView.loadUrl("https://unsplash.com/t/travel");
-                        break;
-                    case 2:
-                        //...TODO: replace with your URL in FASHION position
-                        mWebView.loadUrl("https://unsplash.com/t/fashion");
-                        break;
-                    case 3:
-                        //...TODO: replace with your URL in FOOD position
-                        mWebView.loadUrl("https://unsplash.com/t/food-drink");
-                        break;
-                    case 4:
-                        //...TODO: replace with your URL in MORE position
-                        Log.d(TAG, "onTabSelected: clicked!");
-                        bottomNavigationBar.clearAll();
-                        initBottomNavigationView();
-                        mWebView.loadUrl("https://unsplash.com/collections");
-                        mBottomSheet.setState(BottomSheetBehavior.STATE_EXPANDED);
-                        break;
-                }
-
-
-            }
-
-            @Override
-            public void onTabUnselected(int position) {
-            }
-
-            @Override
-            public void onTabReselected(int position) {
-            }
-        });
 
     }
 
@@ -108,13 +70,16 @@ public class MainActivity extends AppCompatActivity {
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
                 switch (newState) {
                     case BottomSheetBehavior.STATE_HIDDEN:
+                        llTransparentBg.setVisibility(View.GONE);
                         break;
                     case BottomSheetBehavior.STATE_COLLAPSED:
                         //...sheet is in background mode
+                        llTransparentBg.setVisibility(View.GONE);
                         break;
                     case BottomSheetBehavior.STATE_EXPANDED:
                         //...sheet is opened completely
-                        transparentBottomSheetColor(R.color.colorDim);
+                        llTransparentBg.setVisibility(View.VISIBLE);
+                        llTransparentBg.setClickable(false);
                         break;
                 }
             }
@@ -157,11 +122,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     //...bottom sheet layout properties
-    @OnClick({R.id.bottom_sheet_face, R.id.bottom_sheet_home, bottom_sheet_cycle})
+    @OnClick({R.id.bottom_sheet_face, R.id.bottom_sheet_home, R.id.bottom_sheet_cycle, R.id.bottom_sheet_travel, R.id.bottom_sheet_spoon})
     public void itemPicker(LinearLayout view) {
 
         hideBottomSheet();
-        transparentBottomSheetColor(android.R.color.transparent);
 
         switch (view.getId()) {
             case R.id.bottom_sheet_home:
@@ -184,11 +148,54 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void transparentBottomSheetColor(int color) {
-        mSheetBottomLayout.setBackgroundColor(getResources().getColor(color));
+    @OnClick(R.id.ll_transparent_bg)
+    public void onBottomSheetTransparentBgClicked(View view) {
+        hideBottomSheet();
     }
+
 
     public void hideBottomSheet() {
         mBottomSheet.setState(BottomSheetBehavior.STATE_HIDDEN);
     }
+
+    @Override
+    public void onTabSelected(int position) {
+        switch (position) {
+            case 0:
+                //...TODO: replace with your URL
+                mWebView.loadUrl("https://" + getString(R.string.your_website_url));
+                break;
+            case 1:
+                //...TODO: replace with your URL in TRAVEL position
+                mWebView.loadUrl("https://unsplash.com/t/travel");
+                break;
+            case 2:
+                //...TODO: replace with your URL in FASHION position
+                mWebView.loadUrl("https://unsplash.com/t/fashion");
+                break;
+            case 3:
+                //...TODO: replace with your URL in FOOD position
+                mWebView.loadUrl("https://unsplash.com/t/food-drink");
+                break;
+            case 4:
+                //...TODO: replace with your URL in MORE position
+                Log.d(TAG, "onTabSelected: clicked!");
+                bottomNavigationBar.clearAll();
+                bottomNavigationBar.clearAnimation();
+                initBottomNavigationView();
+                mBottomSheet.setState(BottomSheetBehavior.STATE_EXPANDED);
+                break;
+        }
+    }
+
+    @Override
+    public void onTabUnselected(int position) {
+
+    }
+
+    @Override
+    public void onTabReselected(int position) {
+
+    }
+
 }
