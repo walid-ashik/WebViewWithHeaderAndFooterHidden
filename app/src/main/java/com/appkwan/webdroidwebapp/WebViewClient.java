@@ -97,22 +97,11 @@ public class WebViewClient {
                 return false;
             }
 
-//            public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
-//                callback.invoke(origin, true, false);
-//            }
-
-
-            /**
-             * Return WebResourceResponse with CSS markup from a String.
-             */
             @SuppressWarnings("deprecation")
             private WebResourceResponse getCssWebResourceResponseFromString() {
                 return getUtf8EncodedCssWebResourceResponse(new StringBufferInputStream("body { background-color: #F781F3; }"));
             }
 
-            /**
-             * Return WebResourceResponse with CSS markup from an asset (e.g. "assets/style.css").
-             */
             private WebResourceResponse getCssWebResourceResponseFromAsset() {
                 try {
                     return getUtf8EncodedCssWebResourceResponse(context.getAssets().open("style.css"));
@@ -120,13 +109,6 @@ public class WebViewClient {
                     return null;
                 }
             }
-
-            /**
-             * Return WebResourceResponse with CSS markup from a raw resource (e.g. "raw/style.css").
-             */
-//            private WebResourceResponse getCssWebResourceResponseFromRawResource() {
-//                return getUtf8EncodedCssWebResourceResponse(getResources().openRawResource(R.raw.style));
-//            }
 
             private WebResourceResponse getUtf8EncodedCssWebResourceResponse(InputStream data) {
                 return new WebResourceResponse("text/css", "UTF-8", data);

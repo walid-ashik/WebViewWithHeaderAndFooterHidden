@@ -120,34 +120,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                 .setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_RIPPLE);
     }
 
-
-    //...bottom sheet layout properties
-    @OnClick({R.id.bottom_sheet_face, R.id.bottom_sheet_home, R.id.bottom_sheet_cycle, R.id.bottom_sheet_travel, R.id.bottom_sheet_spoon})
-    public void itemPicker(LinearLayout view) {
-
-        hideBottomSheet();
-
-        switch (view.getId()) {
-            case R.id.bottom_sheet_home:
-                //...TODO: replace with bottom hidden
-                mWebView.loadUrl("https://www.uplabs.com/ashik");
-                break;
-
-            case R.id.bottom_sheet_face:
-                //...TODO: replace with bottom hidden face
-                mWebView.loadUrl("https://www.uplabs.com/");
-
-                break;
-            case R.id.bottom_sheet_cycle:
-                //...TODO: replace with bottom hidden
-                mWebView.loadUrl("https://www.uplabs.com/ashawon");
-                break;
-            default:
-                break;
-
-        }
-    }
-
     @OnClick(R.id.ll_transparent_bg)
     public void onBottomSheetTransparentBgClicked(View view) {
         hideBottomSheet();
@@ -161,30 +133,34 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     @Override
     public void onTabSelected(int position) {
         switch (position) {
+
             case 0:
                 //...TODO: replace with your URL
                 mWebView.loadUrl("https://" + getString(R.string.your_website_url));
                 break;
+
             case 1:
                 //...TODO: replace with your URL in TRAVEL position
                 mWebView.loadUrl("https://unsplash.com/t/travel");
                 break;
+
             case 2:
                 //...TODO: replace with your URL in FASHION position
                 mWebView.loadUrl("https://unsplash.com/t/fashion");
                 break;
+
             case 3:
                 //...TODO: replace with your URL in FOOD position
                 mWebView.loadUrl("https://unsplash.com/t/food-drink");
                 break;
+
             case 4:
-                //...TODO: replace with your URL in MORE position
                 Log.d(TAG, "onTabSelected: clicked!");
                 bottomNavigationBar.clearAll();
-                bottomNavigationBar.clearAnimation();
                 initBottomNavigationView();
                 mBottomSheet.setState(BottomSheetBehavior.STATE_EXPANDED);
                 break;
+
         }
     }
 
@@ -196,6 +172,80 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     @Override
     public void onTabReselected(int position) {
 
+    }
+
+
+    //...bottom sheet layout properties
+    @OnClick({R.id.bottom_sheet_face,
+            R.id.bottom_sheet_home,
+            R.id.bottom_sheet_cycle,
+            R.id.bottom_sheet_travel,
+            R.id.bottom_sheet_spoon,
+            R.id.bottom_sheet_face2,
+            R.id.bottom_sheet_home2,
+            R.id.bottom_sheet_cycle2,
+            R.id.bottom_sheet_travel2,
+            R.id.bottom_sheet_spoon2})
+    public void itemPicker(LinearLayout view) {
+
+        hideBottomSheet();
+
+        switch (view.getId()) {
+
+            case R.id.bottom_sheet_home:
+                //...TODO: replace with bottom hidden
+                mWebView.loadUrl("https://www.uplabs.com/ashik");
+                break;
+
+            case R.id.bottom_sheet_face:
+                //...TODO: replace with bottom hidden face
+                mWebView.loadUrl("https://www.uplabs.com/");
+                break;
+
+            case R.id.bottom_sheet_cycle:
+                //...TODO: replace with bottom hidden
+                mWebView.loadUrl("https://www.uplabs.com/ashawon");
+                break;
+
+            case R.id.bottom_sheet_travel:
+                //...TODO: replace with bottom hidden
+                mWebView.loadUrl("https://www.uplabs.com/ashawon");
+                break;
+
+            case R.id.bottom_sheet_spoon:
+                //...TODO: replace with bottom hidden
+                mWebView.loadUrl("https://www.uplabs.com/ashawon");
+                break;
+
+            case R.id.bottom_sheet_home2:
+                //...TODO: replace with bottom hidden
+                mWebView.loadUrl("https://www.uplabs.com/ashik");
+                break;
+
+            case R.id.bottom_sheet_face2:
+                //...TODO: replace with bottom hidden face
+                mWebView.loadUrl("https://www.uplabs.com/");
+                break;
+
+            case R.id.bottom_sheet_cycle2:
+                //...TODO: replace with bottom hidden
+                mWebView.loadUrl("https://www.uplabs.com/ashawon");
+                break;
+
+            case R.id.bottom_sheet_travel2:
+                //...TODO: replace with bottom hidden
+                mWebView.loadUrl("https://www.uplabs.com/ashawon");
+                break;
+
+            case R.id.bottom_sheet_spoon2:
+                //...TODO: replace with bottom hidden
+                mWebView.loadUrl("https://www.uplabs.com/ashawon");
+                break;
+
+            default:
+                break;
+
+        }
     }
 
 }

@@ -23,105 +23,285 @@
         android:background="#eaeaea"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:paddingTop="20dp"
+        android:paddingTop="10dp"
         android:paddingBottom="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/bs_icon_bg_size"
-            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
             android:orientation="horizontal"
-            android:weightSum="4">
+            android:weightSum="5">
 
             <LinearLayout
                 android:id="@+id/bottom_sheet_home"
-                android:layout_width="@dimen/bs_icon_bg_size"
-                android:layout_height="@dimen/bs_icon_bg_size"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/circle_bg_bottom_menu">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="@dimen/bs_icon_bg_size"
+                    android:layout_height="@dimen/bs_icon_bg_size"
+                    android:background="@drawable/circle_bg_bottom_menu"
                     android:padding="15dp"
                     android:src="@drawable/ic_home_white_24dp"
                     android:tint="@color/colorPrimary" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Home"
+                    android:textSize="12sp" />
+
             </LinearLayout>
+
 
             <LinearLayout
                 android:id="@+id/bottom_sheet_travel"
                 android:layout_width="@dimen/bs_icon_bg_size"
-                android:layout_height="@dimen/bs_icon_bg_size"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/circle_bg_bottom_menu">
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="@dimen/bs_icon_bg_size"
+                    android:layout_height="@dimen/bs_icon_bg_size"
+                    android:background="@drawable/circle_bg_bottom_menu"
                     android:padding="15dp"
                     android:src="@drawable/ic_travel_white_24dp"
                     android:tint="@color/colorPrimary" />
 
-            </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Travel"
+                    android:textSize="12sp" />
 
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/bottom_sheet_face"
-                android:layout_width="@dimen/bs_icon_bg_size"
-                android:layout_height="@dimen/bs_icon_bg_size"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-
-                android:background="@drawable/circle_bg_bottom_menu">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="@dimen/bs_icon_bg_size"
+                    android:layout_height="@dimen/bs_icon_bg_size"
+                    android:background="@drawable/circle_bg_bottom_menu"
                     android:padding="15dp"
                     android:src="@drawable/ic_fashion_white_24dp"
                     android:tint="@color/colorPrimary" />
 
-            </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Fashion"
+                    android:textSize="12sp" />
 
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/bottom_sheet_spoon"
-                android:layout_width="@dimen/bs_icon_bg_size"
-                android:layout_height="@dimen/bs_icon_bg_size"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/circle_bg_bottom_menu">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="@dimen/bs_icon_bg_size"
+                    android:layout_height="@dimen/bs_icon_bg_size"
+                    android:background="@drawable/circle_bg_bottom_menu"
                     android:padding="15dp"
                     android:src="@drawable/ic_food_white_24dp"
                     android:tint="@color/colorPrimary" />
 
-            </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Fashion"
+                    android:textSize="12sp" />
 
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/bottom_sheet_cycle"
-                android:layout_width="@dimen/bs_icon_bg_size"
-                android:layout_height="@dimen/bs_icon_bg_size"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/circle_bg_bottom_menu">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="@dimen/bs_icon_bg_size"
+                    android:layout_height="@dimen/bs_icon_bg_size"
+                    android:background="@drawable/circle_bg_bottom_menu"
                     android:padding="15dp"
                     android:src="@drawable/ic_travel_white_24dp"
                     android:tint="@color/colorPrimary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Bike"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
+            android:orientation="horizontal"
+            android:weightSum="5">
+
+            <LinearLayout
+                android:id="@+id/bottom_sheet_home2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/bs_icon_bg_size"
+                    android:layout_height="@dimen/bs_icon_bg_size"
+                    android:background="@drawable/circle_bg_bottom_menu"
+                    android:padding="15dp"
+                    android:src="@drawable/ic_home_white_24dp"
+                    android:tint="@color/colorPrimary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Home"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/bottom_sheet_travel2"
+                android:layout_width="@dimen/bs_icon_bg_size"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/bs_icon_bg_size"
+                    android:layout_height="@dimen/bs_icon_bg_size"
+                    android:background="@drawable/circle_bg_bottom_menu"
+                    android:padding="15dp"
+                    android:src="@drawable/ic_travel_white_24dp"
+                    android:tint="@color/colorPrimary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Travel"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/bottom_sheet_face2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/bs_icon_bg_size"
+                    android:layout_height="@dimen/bs_icon_bg_size"
+                    android:background="@drawable/circle_bg_bottom_menu"
+                    android:padding="15dp"
+                    android:src="@drawable/ic_fashion_white_24dp"
+                    android:tint="@color/colorPrimary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Fashion"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/bottom_sheet_spoon2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/bs_icon_bg_size"
+                    android:layout_height="@dimen/bs_icon_bg_size"
+                    android:background="@drawable/circle_bg_bottom_menu"
+                    android:padding="15dp"
+                    android:src="@drawable/ic_food_white_24dp"
+                    android:tint="@color/colorPrimary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Fashion"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/bottom_sheet_cycle2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/bs_icon_bg_size"
+                    android:layout_height="@dimen/bs_icon_bg_size"
+                    android:background="@drawable/circle_bg_bottom_menu"
+                    android:padding="15dp"
+                    android:src="@drawable/ic_travel_white_24dp"
+                    android:tint="@color/colorPrimary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Bike"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </RelativeLayout>
