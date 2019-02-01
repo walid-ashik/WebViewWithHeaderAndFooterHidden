@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Environment;
 import android.os.Parcelable;
 import android.provider.MediaStore;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -20,6 +21,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.wang.avi.AVLoadingIndicatorView;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringBufferInputStream;
@@ -29,13 +32,16 @@ public class WebViewClient {
 
     Context context;
     WebView mwebView;
+    SwipeRefreshLayout swipeRefreshLayout;
 
-    WebViewClient(Context context, WebView mwebview){
+    WebViewClient(Context context, WebView mwebview, SwipeRefreshLayout swipeRefreshLayout){
         this.context = context;
         mwebView = mwebview;
+        this.swipeRefreshLayout = swipeRefreshLayout;
     }
 
-    public void improveWebViewPerformance(final ProgressBar mLoadingSpinner){
+    public void improveWebViewPerformance(final AVLoadingIndicatorView mLoadingSpinner){
+
         mwebView.setWebViewClient(new android.webkit.WebViewClient(){
             @Override
             public WebResourceResponse shouldInterceptRequest (final WebView view, String url) {
@@ -117,13 +123,13 @@ public class WebViewClient {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon)
             {
-                mLoadingSpinner.setVisibility(View.VISIBLE);
+                mLoadingSpinner.show();
             }
 
 
             @Override
             public void onPageFinished(WebView view, String url) {
-                mLoadingSpinner.setVisibility(View.GONE);
+                mLoadingSpinner.hide();
             }
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
                 //Toast.makeText(MainActivity.this, description, Toast.LENGTH_SHORT).show();
@@ -131,6 +137,14 @@ public class WebViewClient {
                 view.loadUrl("about:blank");
                 showInternetConnectionOutAlertDialog();
                 super.onReceivedError(view, errorCode, description, failingUrl);
+            }
+        });
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mwebView.reload();
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
 

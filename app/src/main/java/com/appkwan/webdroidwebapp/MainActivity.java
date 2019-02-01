@@ -1,7 +1,9 @@
 package com.appkwan.webdroidwebapp;
 
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +15,7 @@ import android.widget.RelativeLayout;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,11 +34,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     @BindView(R.id.ll_transparent_bg)
     LinearLayout llTransparentBg;
 
+    @BindView(R.id.swipeRefreshLayout)
+    SwipeRefreshLayout swipeRefreshLayout;
+
     @BindView(R.id.webview)
     WebView mWebView;
 
     @BindView(R.id.progressBar)
-    ProgressBar mLoadingSpinner;
+    AVLoadingIndicatorView mLoadingSpinner;
 
     @BindView(R.id.sheet_bottom_layout)
     RelativeLayout mSheetBottomLayout;
@@ -50,13 +56,18 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         ButterKnife.bind(this);
         mBottomSheet = BottomSheetBehavior.from(mSheetBottomLayout);
 
+        swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
+
         initWebView();
         initBottomNavigationView();
         bottomNavigationBar.setTabSelectedListener(this);
 
         //...initially load the home website
         mWebView.loadUrl("https://" + getString(R.string.your_website_url));
-        WebViewClient webViewClient = new WebViewClient(this, mWebView);
+        mWebView.clearHistory();
+        mWebView.getSettings().setJavaScriptEnabled(true);
+        mWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+        WebViewClient webViewClient = new WebViewClient(this, mWebView, swipeRefreshLayout);
         webViewClient.improveWebViewPerformance(mLoadingSpinner);
 
     }
@@ -156,9 +167,16 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
             case 4:
                 Log.d(TAG, "onTabSelected: clicked!");
-                bottomNavigationBar.clearAll();
-                initBottomNavigationView();
+
                 mBottomSheet.setState(BottomSheetBehavior.STATE_EXPANDED);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        bottomNavigationBar.clearAll();
+                        initBottomNavigationView();
+                    }
+                }, 1000);
                 break;
 
         }
@@ -185,7 +203,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
             R.id.bottom_sheet_home2,
             R.id.bottom_sheet_cycle2,
             R.id.bottom_sheet_travel2,
-            R.id.bottom_sheet_spoon2})
+            R.id.bottom_sheet_spoon2,
+            R.id.bottom_sheet_call,
+            R.id.bottom_sheet_mail,
+            R.id.bottom_sheet_fb,
+            R.id.bottom_sheet_twitter,
+            R.id.bottom_sheet_instagram
+    })
     public void itemPicker(LinearLayout view) {
 
         hideBottomSheet();
@@ -237,7 +261,24 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                 mWebView.loadUrl("https://www.uplabs.com/ashawon");
                 break;
 
-            case R.id.bottom_sheet_spoon2:
+            case R.id.bottom_sheet_call:
+                //...TODO: replace with bottom hidden
+                mWebView.loadUrl("https://www.uplabs.com/ashawon");
+                break;
+
+            case R.id.bottom_sheet_mail:
+                //...TODO: replace with bottom hidden
+                mWebView.loadUrl("https://www.uplabs.com/ashawon");
+                break;
+            case R.id.bottom_sheet_fb:
+                //...TODO: replace with bottom hidden
+                mWebView.loadUrl("https://www.uplabs.com/ashawon");
+                break;
+            case R.id.bottom_sheet_twitter:
+                //...TODO: replace with bottom hidden
+                mWebView.loadUrl("https://www.uplabs.com/ashawon");
+                break;
+            case R.id.bottom_sheet_instagram:
                 //...TODO: replace with bottom hidden
                 mWebView.loadUrl("https://www.uplabs.com/ashawon");
                 break;
