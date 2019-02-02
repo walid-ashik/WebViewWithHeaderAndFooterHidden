@@ -10,19 +10,14 @@ import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.wang.avi.AVLoadingIndicatorView;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static com.appkwan.webdroidwebapp.R.id.bottom_sheet_cycle;
-import static com.appkwan.webdroidwebapp.R.id.visible;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationBar.OnTabSelectedListener {
 
@@ -66,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         mWebView.loadUrl("https://" + getString(R.string.your_website_url));
         mWebView.clearHistory();
         mWebView.getSettings().setJavaScriptEnabled(true);
+        mWebView.getSettings().setAppCacheEnabled(true);
         mWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         WebViewClient webViewClient = new WebViewClient(this, mWebView, swipeRefreshLayout);
         webViewClient.improveWebViewPerformance(mLoadingSpinner);
@@ -263,23 +259,28 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
             case R.id.bottom_sheet_call:
                 //...TODO: replace with bottom hidden
+                makeCall(getResources().getString(R.string.contact_no));
                 mWebView.loadUrl("https://www.uplabs.com/ashawon");
                 break;
 
             case R.id.bottom_sheet_mail:
                 //...TODO: replace with bottom hidden
+                sendEmail(getResources().getString(R.string.email));
                 mWebView.loadUrl("https://www.uplabs.com/ashawon");
                 break;
             case R.id.bottom_sheet_fb:
                 //...TODO: replace with bottom hidden
+                sendToFbPage(getResources().getString(R.string.fb_address));
                 mWebView.loadUrl("https://www.uplabs.com/ashawon");
                 break;
             case R.id.bottom_sheet_twitter:
                 //...TODO: replace with bottom hidden
+                sendToTwitter(getResources().getString(R.string.twitter_address));
                 mWebView.loadUrl("https://www.uplabs.com/ashawon");
                 break;
             case R.id.bottom_sheet_instagram:
                 //...TODO: replace with bottom hidden
+                sendToInstagram(getResources().getString(R.string.instagram_address));
                 mWebView.loadUrl("https://www.uplabs.com/ashawon");
                 break;
 
@@ -287,6 +288,24 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                 break;
 
         }
+    }
+
+    private void makeCall(String phoneNumber) {
+
+    }
+
+    private void sendEmail(String email) {
+    }
+
+    private void sendToFbPage(String fbUrl) {
+    }
+
+    private void sendToTwitter(String twitterUrl) {
+
+    }
+
+    private void sendToInstagram(String instagramUrl) {
+
     }
 
 }
