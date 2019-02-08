@@ -1,5 +1,9 @@
 package com.appkwan.webdroidwebapp;
 
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
@@ -11,9 +15,11 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.wang.avi.AVLoadingIndicatorView;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -275,7 +281,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                 break;
             case R.id.bottom_sheet_twitter:
                 //...TODO: replace with bottom hidden
-                sendToTwitter(getResources().getString(R.string.twitter_address));
+                sendToTwitter(getResources().getString(R.string.twitter_username));
                 mWebView.loadUrl("https://www.uplabs.com/ashawon");
                 break;
             case R.id.bottom_sheet_instagram:
@@ -291,20 +297,52 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     }
 
     private void makeCall(String phoneNumber) {
-
+        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phoneNumber, null));
+        startActivity(intent);
     }
 
     private void sendEmail(String email) {
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                "mailto", email, null));
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "From " + getString(R.string.app_name) + " app | ..");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "");
+        startActivity(Intent.createChooser(emailIntent, "Send email..."));
     }
 
     private void sendToFbPage(String fbUrl) {
+        Uri uri = Uri.parse(fbUrl);
+        try {
+            ApplicationInfo applicationInfo = getPackageManager().getApplicationInfo("com.facebook.katana", 0);
+            if (applicationInfo.enabled) {
+                // http://stackoverflow.com/a/24547437/1048340
+                uri = Uri.parse("fb://facewebmodal/f?href=" + fbUrl);
+            }
+        } catch (PackageManager.NameNotFoundException ignored) {
+        }
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
     }
 
-    private void sendToTwitter(String twitterUrl) {
-
+    private void sendToTwitter(String twiiterUsername) {
+        try {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?screen_name=" + twiiterUsername)));
+        }catch (Exception e) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/#!/" + twiiterUsername)));
+        }
     }
 
-    private void sendToInstagram(String instagramUrl) {
+    private void sendToInstagram(String username) {
+        try {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("http://instagram.com/_u/" + username));
+            intent.setPackage("com.instagram.android");
+            startActivity(intent);
+        }
+        catch (android.content.ActivityNotFoundException anfe)
+        {
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://www.instagram.com/" + username)));
+        }
 
     }
 

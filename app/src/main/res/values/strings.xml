@@ -3,7 +3,7 @@
     <string name="your_website_url">unsplash.com</string>
     <string name="contact_no">01100000</string>
     <string name="email">example@email.com</string>
-    <string name="fb_address">www.facebook.com/</string>
-    <string name="twitter_address">www.twitter.com/</string>
-    <string name="instagram_address">wwww.instagram.com/</string>
+    <string name="fb_address">https://www.facebook.com/badengineerbd/</string>
+    <string name="twitter_username">alwalidashik</string>
+    <string name="instagram_address">al_walid_ashik</string>
 </resources>
