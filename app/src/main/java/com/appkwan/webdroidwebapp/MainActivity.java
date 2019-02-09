@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
         bottomNavigationBar.setTabSelectedListener(this);
 
         //...initially load the home website
-        mWebView.loadUrl("https://" + getString(R.string.your_website_url));
+        mWebView.loadUrl(getString(R.string.your_website_url));
         mWebView.clearHistory();
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.getSettings().setAppCacheEnabled(true);
@@ -286,7 +286,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
                 break;
             case R.id.bottom_sheet_instagram:
                 //...TODO: replace with bottom hidden
-                sendToInstagram(getResources().getString(R.string.instagram_address));
+                sendToInstagram(getResources().getString(R.string.instagram_username));
                 mWebView.loadUrl("https://www.uplabs.com/ashawon");
                 break;
 
